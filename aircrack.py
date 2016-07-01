@@ -22,6 +22,7 @@ s = """
 """
 a = os.system
 print s
+a('apt-get install aircrack-ng')
 print colored("This is just a simple script that can help you crack wireless network's pass", "green")
 time.sleep( 5 )
 print colored('first, enter your wireless card (useualy wlan0) then hit enter', 'green')
