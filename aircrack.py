@@ -13,25 +13,25 @@ from os import system
 from termcolor import colored
 
 logo = """
- ▄▄▄      ██▓██▀███  ▄████▄  ██▀███  ▄▄▄      ▄████▄  ██ ▄█▀
-▒████▄   ▓██▓██ ▒ ██▒██▀ ▀█ ▓██ ▒ ██▒████▄   ▒██▀ ▀█  ██▄█▒ 
-▒██  ▀█▄ ▒██▓██ ░▄█ ▒▓█    ▄▓██ ░▄█ ▒██  ▀█▄ ▒▓█    ▄▓███▄░ 
-░██▄▄▄▄██░██▒██▀▀█▄ ▒▓▓▄ ▄██▒██▀▀█▄ ░██▄▄▄▄██▒▓▓▄ ▄██▓██ █▄ 
- ▓█   ▓██░██░██▓ ▒██▒ ▓███▀ ░██▓ ▒██▒▓█   ▓██▒ ▓███▀ ▒██▒ █▄
- ▒▒   ▓▒█░▓ ░ ▒▓ ░▒▓░ ░▒ ▒  ░ ▒▓ ░▒▓░▒▒   ▓▒█░ ░▒ ▒  ▒ ▒▒ ▓▒
-  ▒   ▒▒ ░▒ ░ ░▒ ░ ▒░ ░  ▒    ░▒ ░ ▒░ ▒   ▒▒ ░ ░  ▒  ░ ░▒ ▒░
-  ░   ▒   ▒ ░ ░░   ░░         ░░   ░  ░   ▒  ░       ░ ░░ ░ 
-      ░  ░░    ░    ░ ░        ░          ░  ░ ░     ░  ░   
-                    ░                        ░
+ █     █░██▓ ███████▓▄████▄  ██▀███  ▄▄▄      ▄████▄  ██ ▄█▓█████ ██▀███  
+▓█░ █ ░█▓██▓██   ▓██▒██▀ ▀█ ▓██ ▒ ██▒████▄   ▒██▀ ▀█  ██▄█▒▓█   ▀▓██ ▒ ██▒
+▒█░ █ ░█▒██▒████ ▒██▒▓█    ▄▓██ ░▄█ ▒██  ▀█▄ ▒▓█    ▄▓███▄░▒███  ▓██ ░▄█ ▒
+░█░ █ ░█░██░▓█▒  ░██▒▓▓▄ ▄██▒██▀▀█▄ ░██▄▄▄▄██▒▓▓▄ ▄██▓██ █▄▒▓█  ▄▒██▀▀█▄  
+░░██▒██▓░██░▒█░  ░██▒ ▓███▀ ░██▓ ▒██▒▓█   ▓██▒ ▓███▀ ▒██▒ █░▒████░██▓ ▒██▒
+░ ▓░▒ ▒ ░▓  ▒ ░  ░▓ ░ ░▒ ▒  ░ ▒▓ ░▒▓░▒▒   ▓▒█░ ░▒ ▒  ▒ ▒▒ ▓░░ ▒░ ░ ▒▓ ░▒▓░
+  ▒ ░ ░  ▒ ░░     ▒ ░ ░  ▒    ░▒ ░ ▒░ ▒   ▒▒ ░ ░  ▒  ░ ░▒ ▒░░ ░  ░ ░▒ ░ ▒░
+  ░   ░  ▒ ░░ ░   ▒ ░         ░░   ░  ░   ▒  ░       ░ ░░ ░   ░    ░░   ░ 
+    ░    ░        ░ ░ ░        ░          ░  ░ ░     ░  ░     ░  ░  ░     
+                    ░                        ░                            
 """
 
-intro = """This is a simple script that helps you crack your nearby wireless networks passwords
+intro = """This is a simple script that cracks nearby wireless networks passwords
 First, enter your wireless card (usually wlan0) then hit enter
 It will give you a list of all available wireless networks in your area
 Copy their BSSID and channel number and save them for later
 Let\'s rock!"""
 
-print logo
+print colored(logo, 'green')
 print colored(intro, 'green')
 
 # asks for wireless card to apply monitor mode on it
@@ -60,6 +60,7 @@ system(airodump2)
 print colored("Handshake is captured", "green")
 print colored("Cracking the handshake with aircrack-ng is starting...", "green")
 
+# 'Aircrack-ng' parameters set
 wordlist = raw_input("Specify the path to your wordlist dictionary: ")
 save2 = raw_input("Enter the .cap file name that is saved in the directory you previously entered: e.g: 01.cap")
 print colored("This could take a while according to the wordlist you are using, so be patient!", "red")
