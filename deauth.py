@@ -1,11 +1,11 @@
 #! /usr/bin/python
 # -*- coding: utf-8 -*-
- """
+"""
  This is another small script used to deauthenficate a client from his network
  so when he re-connect a handshake will be captured in the running airodump-ng
  script.
  author: https://github.com/yelhamer
- """
+"""
 from os import system
 from termcolor import colored
 from time import sleep
