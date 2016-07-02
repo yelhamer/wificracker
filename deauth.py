@@ -21,5 +21,5 @@ if answer.upper() == 'Y':
 	time.sleep( 3 )
 	exit()
 else:
-		a('./deauth.py')
+		a(send_deauth)
 		exit()
