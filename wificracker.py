@@ -9,7 +9,7 @@ Author: yelhamer (github.com/yelhamer)
 """
 
 from os import system
-
+from time import sleep
 from termcolor import colored
 
 logo = """
@@ -49,11 +49,11 @@ system(airodump)
 bssid = raw_input("Enter the BSSID of the network you want to crack: ")
 
 # asks for your target's channel
-channel = raw_input("Enter the channel number that the wireless network is currently running on:")
+channel = raw_input("Enter the channel number that the wireless network is currently running on: ")
 save = raw_input("Where should i save the captured handshake? ")
 print colored("...", "red"),
 print colored("Airodump will start, in the meanwhile, run deauth.py in a new terminal", "red")
-sleep( 5 )
+sleep(5)
 
 # starts airodump-ng on a network to capture handshakes and open new xterm to deauth connected devices
 airodump2 = 'airodump-ng -c {0} --bssid {1} -w {2} {3}'.format(channel, bssid, save, wireless_card)
