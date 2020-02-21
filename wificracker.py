@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-A small script to help you crack nearby wireless networks.
-this script uses aircrack-ng suite
+Turns on the monitor mode and starts airodump-ng
 
 Author: yelhamer (github.com/yelhamer)
 """
