@@ -1,9 +1,8 @@
 #! /usr/bin/python
 # -*- coding: utf-8 -*-
 """
- This is another small script used to deauthenficate a client from his network
- so when he re-connect a handshake will be captured in the running airodump-ng
- script.
+ To be run after wificracker.py
+ Deauthenticates clients from the Access Point being audited.
  author: https://github.com/yelhamer
 """
 from os import system
