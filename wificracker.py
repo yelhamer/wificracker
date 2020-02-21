@@ -1,17 +1,16 @@
-#! /usr/bin/python
+#! /usr/bin/python3
 # -*- coding: utf-8 -*-
 
-"""
-Turns on the monitor mode and starts airodump-ng
-
-Author: yelhamer (github.com/yelhamer)
-"""
+'''
+ This script automates the security auditing procedure of nearby access points utilizing the aircrack-ng suite (https://www.aircrack-ng.org/)
+ yelhamer (github.com/yelhamer)
+'''
 
 from os import system
 from time import sleep
-from termcolor import colored
+from termcolor import colored, cprint
 
-logo = """
+logo = colored('''
  █     █░██▓ ███████▓▄████▄  ██▀███  ▄▄▄      ▄████▄  ██ ▄█▓█████ ██▀███  
 ▓█░ █ ░█▓██▓██   ▓██▒██▀ ▀█ ▓██ ▒ ██▒████▄   ▒██▀ ▀█  ██▄█▒▓█   ▀▓██ ▒ ██▒
 ▒█░ █ ░█▒██▒████ ▒██▒▓█    ▄▓██ ░▄█ ▒██  ▀█▄ ▒▓█    ▄▓███▄░▒███  ▓██ ░▄█ ▒
@@ -22,15 +21,15 @@ logo = """
   ░   ░  ▒ ░░ ░   ▒ ░         ░░   ░  ░   ▒  ░       ░ ░░ ░   ░    ░░   ░ 
     ░    ░        ░ ░ ░        ░          ░  ░ ░     ░  ░     ░  ░  ░     
                     ░                        ░                            
-"""
+''', 'red')
 
-intro = """Simple Access-Point Auditing script"""
+intro = colored('Access-Point Auditing script', 'red')
 
-print colored(logo, 'green')
-print colored(intro, 'green')
+print(logo)
+print(intro)
 
 # asks for wireless card to apply monitor mode on it
-wireless_card = raw_input("Wireless Interface to use: ")
+wireless_card = input('Wireless Interface to use: ')
 
 # turns wireless card into monitor mod
 mon0 = 'ifconfig {0} down && iwconfig {0} mode monitor && ifconfig {0} up'.format(wireless_card)
@@ -41,25 +40,25 @@ airodump = 'airodump-ng {0}'.format(wireless_card)
 system(airodump)
 
 # asks for your target's bssid
-bssid = raw_input("Target's BSSID: ")
+bssid = input('Target\'s BSSID: ')
 
 # asks for your target's channel
-channel = raw_input("Target's Operating Channel: ")
-save = raw_input("Save Directory ")
-print colored("...", "red"),
-print colored("Airodump will start, in the meanwhile, run deauth.py in a new terminal", "red")
-sleep(5)
+channel = input('Target\'s Operating Channel: ')
+save = input('Save Directory ')
+cprint('...', 'red'),
+cprint('Airodump is starting. In the meanwhile, run deauth.py in a new terminal', 'red')
+sleep(4)
 
 # starts airodump-ng on a network to capture handshakes and open new xterm to deauth connected devices
 airodump2 = 'airodump-ng -c {0} --bssid {1} -w {2} {3}'.format(channel, bssid, save, wireless_card)
 system(airodump2)
-print colored("Handshake is captured", "green")
-print colored("Cracking the handshake with aircrack-ng is starting...", "green")
+cprint('Handshake is captured', 'green')
+cprint('Cracking the handshake with aircrack-ng is starting...', 'green')
 
 # 'Aircrack-ng' parameters set
-wordlist = raw_input("Wordlist Path: ")
-save2 = raw_input("Directory of the Previously Generated Cap File e.g. 01.cap")
-print colored("This might take a while", "red")
+wordlist = input('Wordlist Path: ')
+save2 = input('Directory of the Previously Generated Cap File e.g. 01.cap')
+cprint('This might take a while', 'red')
 crack = 'aircrack-ng -a 2 {0}{1} -w {2} '.format(save, save2, wordlist)
 system(crack)
-print("Quitting")
+print('Quitting...')
