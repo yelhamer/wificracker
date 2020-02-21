@@ -1,5 +1,5 @@
 # Wificracker
-Small Python script that automates security audits for nearby access points using the [aircrack-ng](https://www.aircrack-ng.org/) tool
+Small Python script that automates security audits for nearby access points using the [aircrack-ng](https://www.aircrack-ng.org/) suite
 
 ### Requirements
 - [aircrack-ng](https://www.aircrack-ng.org/)
