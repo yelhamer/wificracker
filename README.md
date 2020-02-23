@@ -4,3 +4,8 @@ Small Python script that automates security audits for nearby access points usin
 ### Requirements
 - [aircrack-ng](https://www.aircrack-ng.org/)
 - [termcolor](https://pypi.python.org/pypi/termcolor)
+
+### Installation
+```Shell
+pip3 install termcolor && sudo apt install aircrack-ng && echo done
+```
